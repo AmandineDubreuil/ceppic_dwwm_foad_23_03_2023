@@ -23,7 +23,7 @@
     <main>
         <div>
             <a href=""><button> Choisir une formation</button></a>
-            <a href=""><button> Ajouter une formation</button></a>
+            <a href="./adminForma/ajout.php"><button> Ajouter une formation</button></a>
             <a href=""><button> Modifier une formation</button></a>
             <a href=""><button> supprimer une formation</button></a>
         </div>

@@ -10,9 +10,9 @@ include '../inc/fonctions.php';
 
 $titre = $description = $imageUpload = '';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["upload"])) :
+if ($_SERVER['REQUEST_METHOD'] === 'POST') :
 
-    imageUpload($imageUpload);
+   
 
 endif;
 
