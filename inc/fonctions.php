@@ -165,6 +165,15 @@ function updateFormation(int $id_formation, string $titre, string $description, 
    return $resultat->execute();
 }
 
+function suppFormationById(int $idFormation): bool
+{
+   require 'pdo.php';
+   $sqlRequest = "DELETE FROM formations WHERE id_formation = :idFormation";
+   $resultat = $conn->prepare($sqlRequest);
+   $resultat->bindValue(':idFormation', $idFormation, PDO::PARAM_INT);
+   return $resultat->execute();
+}
+
 
 function isGetIdValid(): bool
 {
