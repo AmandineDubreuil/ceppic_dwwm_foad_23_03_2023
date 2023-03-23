@@ -15,7 +15,7 @@
             <h1>Forma - 1er sur les formations</h1>
             <p>
                 <a href="">Home</a>
-                <a href="">Inscription</a>
+                <a href="./register/">Inscription</a>
                 <a href="">Connexion</a>
             </p>
         </nav>
