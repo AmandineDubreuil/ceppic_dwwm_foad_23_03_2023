@@ -16,7 +16,14 @@
             <p>
                 <a href="">Home</a>
                 <a href="./register/">Inscription</a>
-                <a href="./login/">Connexion</a>
+                <?php
+                if (isUserLogin()) : ?>
+                    <a href="./login/deconnexion.php" role="button">Déconnexion</a>
+                <?php else : ?>
+
+                    <a href="./login/">Connexion</a>
+                <?php endif ?>
+
             </p>
         </nav>
     </header>
@@ -25,15 +32,20 @@
             <a href=""><button> Mes formations</button></a>
         </div>
         <section>
-        <?php
-        if (count(getFormationLimit($limit, $offset)) != 0) :
+            <?php
+            if (count(getFormationLimit($limit, $offset)) != 0) :
                 foreach (getFormationLimit($limit, $offset) as $formation) : ?>
-            <article>
-                <h4><?= $formation['titre'] ?></h4>
-                <div><img src="<?= $formation['image'] ?>" alt=""></div>
-                <p><?= $formation['description'] ?></p>
-                <p>créée le : <?= $formation['created_at'] ?></p>
-            </article>
+                    <article>
+                        <h4><?= $formation['titre'] ?></h4>
+                        <div><img src="<?= $formation['image'] ?>" alt=""></div>
+                        <p><?= $formation['description'] ?></p>
+                        <p>créée le : <?= $formation['created_at'] ?></p>
+                        <?php
+                        if (isUserLogin()) { ?>
+                            <div><button type="submit">Choisir cette formation</button></div>
+                        <?php } ?>
+
+                    </article>
             <?php
                 endforeach;
             else :

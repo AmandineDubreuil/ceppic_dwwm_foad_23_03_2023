@@ -14,7 +14,7 @@
         <nav>
             <h1>Admin formations</h1>
             <p>
-                <a href="../../index.php">Formations</a>
+                <a href="../index.php">Formations</a>
             </p>
         </nav>
     </header>
