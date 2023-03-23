@@ -1,4 +1,5 @@
-<?php //session_start(); ?>
+<?php //session_start(); 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,17 +18,18 @@
             <h1>Forma - 1er sur les formations</h1>
             <p>
                 <a href="">Home</a>
-                               <?php
+                <?php
                 if (isUserLogin()) : ?>
                     <a href="./login/deconnexion.php" role="button">Déconnexion</a>
                 <?php else : ?>
                     <a href="./register/">Inscription</a>
                     <a href="./login/">Connexion</a>
-                <?php endif ;
-                if ($_SESSION['role'] === 'admin') : ?>
-                    <a href="./adminForma/index.php" role="button">Accès Dashboard</a>
+                    <?php
+                    if (session_status() === PHP_SESSION_ACTIVE &&  $role === 'admin') : ?>
+                        <a href="./adminForma/index.php" role="button">Accès Dashboard</a>
 
-                    <?php  endif; ?>
+                <?php endif;
+                endif; ?>
 
             </p>
         </nav>
@@ -51,7 +53,7 @@
 
                         ?>
                             <div>
-                            <a href="./panierFormation.php?id=<?= $formation['id_formation'] ?>" role="button">Choisir cette formation</a>
+                                <a href="./panierFormation.php?id=<?= $formation['id_formation'] ?>" role="button">Choisir cette formation</a>
                             </div>
                         <?php } ?>
 
