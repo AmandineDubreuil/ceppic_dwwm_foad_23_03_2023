@@ -197,7 +197,16 @@ function insertChoix(string $idFormation, string $idUser): int
     return $conn->lastInsertId();
 }
 
-
+function showChoix( $idUser)
+{
+    require 'pdo.php';
+    $requete = 'SELECT formation_id, titre FROM `choix` JOIN formations formations ON formations.id_formation = choix.formation_id  WHERE user_id = :idUser';
+    $resultat = $conn->prepare($requete);
+    $resultat->bindValue(':idUser', $idUser, PDO::PARAM_INT);
+    $resultat->execute();
+    return $resultat->fetchAll();
+ 
+}
 
 
 /* général */

@@ -29,7 +29,7 @@
     </header>
     <main>
         <div>
-            <a href=""><button> Mes formations</button></a>
+            <a href="./listingFormations.php"><button> Mes formations</button></a>
         </div>
         <section>
             <?php
