@@ -17,7 +17,7 @@
                 <input type="titre" name="titre" id="titre" value="<?= $titre ?>">
             </div>
             <div>
-                <label for="description">Description</label>
+                <label for="description">Titre</label>
 <textarea name="description" id="description"><?= $description ?></textarea>
             </div>
             <div>

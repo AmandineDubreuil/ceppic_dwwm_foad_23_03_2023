@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forma</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
@@ -21,15 +21,17 @@
                 <?php
                 if (isUserLogin()) : ?>
                     <a href="./login/deconnexion.php" role="button">Déconnexion</a>
-                <?php else : ?>
+                    <?php
+                    if ($_SESSION['role'] === 'admin') : ?>
+                        <a href="./adminForma/index.php" role="button">Admin Forma</a>
+                    <?php endif;
+
+                else : ?>
                     <a href="./register/">Inscription</a>
                     <a href="./login/">Connexion</a>
-                    <?php
-                    if (session_status() === PHP_SESSION_ACTIVE &&  $role === 'admin') : ?>
-                        <a href="./adminForma/index.php" role="button">Accès Dashboard</a>
 
-                <?php endif;
-                endif; ?>
+
+                <?php endif; ?>
 
             </p>
         </nav>

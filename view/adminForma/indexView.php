@@ -15,6 +15,7 @@
             <h1>Admin formations</h1>
             <p>
                 <a href="../index.php">Formations</a>
+                <a href="ajout.php">Ajouter une formation</a>
             </p>
         </nav>
     </header>

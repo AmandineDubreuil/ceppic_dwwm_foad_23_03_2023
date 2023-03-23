@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["ajout"])) :
 
         insertFormation($titre, $description, $imageUpload);
 
-    redirectUrl();
+    redirectUrl('adminForma/index.php');
 
 endif;
 

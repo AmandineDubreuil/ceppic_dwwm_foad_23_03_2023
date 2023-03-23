@@ -69,7 +69,7 @@ function isUserLogin(): bool
 function insertFormation(string $titre, string $description, string $imageUpload): int
 {
     require 'pdo.php';
-    $requete = 'INSERT INTO formations (titre,description,image) VALUES (:titre, :description, :image)';
+    $requete = 'INSERT INTO formations (titre,description,image, created_at) VALUES (:titre, :description, :image, now() )';
     $resultat = $conn->prepare($requete);
     $resultat->bindValue(':titre', $titre, PDO::PARAM_STR);
     $resultat->bindValue(':description', $description, PDO::PARAM_STR);
