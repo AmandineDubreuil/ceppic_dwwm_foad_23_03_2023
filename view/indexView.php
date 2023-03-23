@@ -41,8 +41,13 @@
                         <p><?= $formation['description'] ?></p>
                         <p>créée le : <?= $formation['created_at'] ?></p>
                         <?php
-                        if (isUserLogin()) { ?>
-                            <div><button type="submit">Choisir cette formation</button></div>
+                        if (isUserLogin()) {
+
+
+                        ?>
+                            <div>
+                            <a href="./panierFormation.php?id=<?= $formation['id_formation'] ?>" role="button">Choisir cette formation</a>
+                            </div>
                         <?php } ?>
 
                     </article>

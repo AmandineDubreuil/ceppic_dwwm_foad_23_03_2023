@@ -20,7 +20,7 @@
     </header>
     <main>
         <section>
-            <?php
+            <?php 
             if (count(getFormationLimit($limit, $offset)) != 0) : ?>
                 <table>
                     <thead>

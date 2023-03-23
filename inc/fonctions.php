@@ -184,6 +184,21 @@ function isGetIdValid(): bool
    endif;
 }
 
+/** fonctions pour BDD Choix */
+
+function insertChoix(string $idFormation, string $idUser): int
+{
+    require 'pdo.php';
+    $requete = 'INSERT INTO choix (formation_id, user_id) VALUES (:idFormation, :idUser)';
+    $resultat = $conn->prepare($requete);
+    $resultat->bindValue(':idFormation', $idFormation, PDO::PARAM_INT);
+    $resultat->bindValue(':idUser', $idUser, PDO::PARAM_INT);
+    $resultat->execute();
+    return $conn->lastInsertId();
+}
+
+
+
 
 /* général */
 function redirectUrl(string $path = ''): void
