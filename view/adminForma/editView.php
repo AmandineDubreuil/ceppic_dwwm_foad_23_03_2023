@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,27 +10,27 @@
 </head>
 
 <body>
-    
+
     <main>
-        <h2>Modification de la formation : <?= $formation['titre'] ?> </h2>
-        
-        <form method="POST" action="" enctype="multipart/form-data" class="form" novalidate>
+        <h2>Modification de la formation : <?= $titre ?> </h2>
+
+        <form method="POST" action="" enctype="multipart/form-data" class="form" >
             <div>
                 <label for="titre">Intitulé de la formation</label>
                 <input type="titre" name="titre" id="titre" value="<?= $titre ?>" placeholder="<?= $titre ?>">
             </div>
             <div>
                 <label for="description">Description</label>
-<textarea name="description" id="description" placeholder="<?= $description ?>"><?= $description ?></textarea>
+                <textarea name="description" id="description" placeholder="<?= $description ?>"><?= $description ?></textarea>
             </div>
             <div>
                 <label for="imageUpload">Image</label>
                 <input type="file" name="imageUpload" id="imageUpload" value="<?= $imageUpload ?>">
-                <input type="submit" name="upload" value="Télécharger l'Image">
+                <!-- <input type="submit" name="upload" value="Télécharger l'Image"> -->
             </div>
             <div>
-                <input type="submit" name="ajout" value="Ajouter">
-                <a href="./"><button type="button">Annuler</button></a>
+                <input type="submit" name="ajout" value="Modifier">
+                <!-- <a href="./"><button type="button">Annuler</button></a> -->
             </div>
             <?php if (!empty($errors)) : ?>
                 <div class="errors">

@@ -142,6 +142,40 @@ function getFormationLimit(int $limit, int $offset): array
    return $resultat->fetchAll();
 }
 
+function getFormationById(int $idFormation): array
+{
+   require 'pdo.php';
+   $sqlRequest = "SELECT * FROM formations WHERE id_formation = :idFormation";
+   $resultat = $conn->prepare($sqlRequest);
+   $resultat->bindValue(':idFormation', $idFormation, PDO::PARAM_INT);
+   $resultat->execute();
+   return $resultat->fetch();
+}
+
+function updateFormation(int $id_formation, string $titre, string $description, string $image): bool
+{
+   require 'pdo.php';
+   $requete = 'UPDATE formations SET titre = :titre, description = :description,image = :image WHERE id_formation = :id_formation';
+   $resultat = $conn->prepare($requete);
+   $resultat->bindValue(':id_formation', $id_formation, PDO::PARAM_INT);
+   $resultat->bindValue(':titre', $titre, PDO::PARAM_STR);
+   $resultat->bindValue(':description', $description, PDO::PARAM_STR);
+   $resultat->bindValue(':image', $image, PDO::PARAM_STR);
+   $resultat->execute();
+   return $resultat->execute();
+}
+
+
+function isGetIdValid(): bool
+{
+   if (isset($_GET['id']) && is_numeric($_GET['id'])):
+      return true;
+   else:
+      return false;
+   endif;
+}
+
+
 /* général */
 function redirectUrl(string $path = ''): void
 {
