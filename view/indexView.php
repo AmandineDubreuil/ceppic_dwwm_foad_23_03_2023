@@ -16,7 +16,7 @@
             <p>
                 <a href="">Home</a>
                 <a href="./register/">Inscription</a>
-                <a href="">Connexion</a>
+                <a href="./login/">Connexion</a>
             </p>
         </nav>
     </header>

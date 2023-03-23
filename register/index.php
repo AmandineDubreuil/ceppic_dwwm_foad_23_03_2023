@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') :
             $lastIdUtilisateur = insertUtilisateur($nom, $email, $pwd);
             $_SESSION['login'] = findEmail($email)['role'];
 
-            $_SESSION['id_utilisateur'] = $lastIdUtilisateur;
+            $_SESSION['id_user'] = $lastIdUtilisateur;
             if($role === 'admin'):
                redirectUrl('./adminForma/');
             else:
