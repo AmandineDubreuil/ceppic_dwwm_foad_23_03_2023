@@ -22,18 +22,27 @@
     </header>
     <main>
         <div>
-            <a href=""><button> Choisir une formation</button></a>
+            <a href=""><button> Mes formations</button></a>
             <a href="./adminForma/ajout.php"><button> Ajouter une formation</button></a>
             <a href=""><button> Modifier une formation</button></a>
             <a href=""><button> supprimer une formation</button></a>
         </div>
         <section>
+        <?php
+        if (count(getFormationLimit($limit, $offset)) != 0) :
+                foreach (getFormationLimit($limit, $offset) as $formation) : ?>
             <article>
-                <h4></h4>
-                <div><img src="" alt=""></div>
-                <p></p>
-                <p>créée le :</p>
+                <h4><?= $formation['titre'] ?></h4>
+                <div><img src="<?= $formation['image'] ?>" alt=""></div>
+                <p><?= $formation['description'] ?></p>
+                <p>créée le : <?= $formation['created_at'] ?></p>
             </article>
+            <?php
+                endforeach;
+            else :
+                echo 'Aucune formation de disponible.';
+            endif;
+            ?>
         </section>
     </main>
     <footer>

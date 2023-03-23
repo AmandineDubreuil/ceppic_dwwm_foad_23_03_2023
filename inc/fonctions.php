@@ -78,7 +78,69 @@ function insertFormation(string $titre, string $description, string $imageUpload
     return $conn->lastInsertId();
 }
 
+/** téléchargement d'image */
+function imageUpload($imageUpload)
+{
+    $target_dir = "uploads/";
+    $target_file = $target_dir . basename($_FILES["imageUpload"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    // Check if image file is a actual image or fake image
+    if (isset($_POST["upload"])) {
+        $check = getimagesize($_FILES["imageUpload"]["tmp_name"]);
+        if ($check !== false) {
+            echo "File is an image - " . $check["mime"] . ".";
+            $uploadOk = 1;
+            // redirectUrl('./adminForma/ajout.php');
+        } else {
+            echo "File is not an image.";
+            $uploadOk = 0;
+        }
+    }
+    // Check if file already exists
+    if (file_exists($target_file)) {
+        echo "Sorry, file already exists.";
+        $uploadOk = 0;
+    }
 
+    // Check file size
+    if ($_FILES["imageUpload"]["size"] > 500000) {
+        echo "Sorry, your file is too large.";
+        $uploadOk = 0;
+    }
+
+    // Allow certain file formats
+    if (
+        $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif"
+    ) {
+        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        $uploadOk = 0;
+    }
+
+    // Check if $uploadOk is set to 0 by an error
+    if ($uploadOk == 0) {
+        echo "Sorry, your file was not uploaded.";
+        // if everything is ok, try to upload file
+    } else {
+        if (move_uploaded_file($_FILES["imageUpload"]["tmp_name"], $target_file)) {
+            echo "The file " . htmlspecialchars(basename($_FILES["imageUpload"]["name"])) . " has been uploaded.";
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+        }
+    }
+}
+
+function getFormationLimit(int $limit, int $offset): array
+{
+   require 'pdo.php';
+   $sqlRequest = "SELECT id_formation, titre, description, image, created_at FROM `formations` WHERE 1 ORDER BY created_at DESC LIMIT :limit OFFSET :offset";
+   $resultat = $conn->prepare($sqlRequest);
+   $resultat->bindValue(':limit', $limit, PDO::PARAM_INT);
+   $resultat->bindValue(':offset', $offset, PDO::PARAM_INT);
+   $resultat->execute();
+   return $resultat->fetchAll();
+}
 
 /* général */
 function redirectUrl(string $path = ''): void
