@@ -1,24 +1,31 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Ajout Formation</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modification Formation</title>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>
-    <main class="container">
-        <h2>Ajout d'une formation</h2>
+    
+    <main>
+        <h2>Modification de la formation : <?= $formation['titre'] ?> </h2>
+        
         <form method="POST" action="" enctype="multipart/form-data" class="form" novalidate>
             <div>
                 <label for="titre">Intitulé de la formation</label>
-                <input type="titre" name="titre" id="titre" value="<?= $titre ?>">
+                <input type="titre" name="titre" id="titre" value="<?= $titre ?>" placeholder="<?= $titre ?>">
             </div>
             <div>
                 <label for="description">Description</label>
-<textarea name="description" id="description"><?= $description ?></textarea>
+<textarea name="description" id="description" placeholder="<?= $description ?>"><?= $description ?></textarea>
             </div>
             <div>
                 <label for="imageUpload">Image</label>
@@ -38,6 +45,9 @@
             <?php endif; ?>
         </form>
     </main>
+    <footer>
+        <p>Amandine - 2023</p>
+    </footer>
 </body>
 
 </html>
