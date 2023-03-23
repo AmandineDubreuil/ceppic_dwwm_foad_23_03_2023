@@ -1,3 +1,5 @@
+<?php //session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,14 +17,17 @@
             <h1>Forma - 1er sur les formations</h1>
             <p>
                 <a href="">Home</a>
-                <a href="./register/">Inscription</a>
-                <?php
+                               <?php
                 if (isUserLogin()) : ?>
                     <a href="./login/deconnexion.php" role="button">Déconnexion</a>
                 <?php else : ?>
-
+                    <a href="./register/">Inscription</a>
                     <a href="./login/">Connexion</a>
-                <?php endif ?>
+                <?php endif ;
+                if ($_SESSION['role'] === 'admin') : ?>
+                    <a href="./adminForma/index.php" role="button">Accès Dashboard</a>
+
+                    <?php  endif; ?>
 
             </p>
         </nav>

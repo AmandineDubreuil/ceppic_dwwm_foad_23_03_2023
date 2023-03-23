@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') :
             if (password_verify($pwd, findEmail($email)['pwd'])) :
                 $_SESSION['login'] = findEmail($email)['role'];
                 $_SESSION['id_user'] = findEmail($email)['id_user'];
+                $_SESSION['role'] = findEmail($email)['role'];
 
                 if (findEmail($email)['role'] === 'admin') :
                    redirectUrl('adminForma/');
